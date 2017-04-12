@@ -28,7 +28,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     // cognitive variables
     // global Language
-    var language = "it"
+    var language = "en"
+    
+    var toLanguage = "en"
+    
     
     /// Request URL
     let url = "https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr"
@@ -163,19 +166,27 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @IBAction func translatebtn(_ sender: UIButton) {
         bgimg.image = #imageLiteral(resourceName: "bgr")
-        //let requestObject: OCRRequestObject = (resource: UIImagePNGRepresentation(UIImage(named: "ocrDemo")!)!, language: .Automatic, detectOrientation: true)
-        try! recognizeCharactersWithRequestObject(completion: { (response) in
+        if (currentImage != nil){
+            try! recognizeCharactersWithRequestObject(completion: { (response) in
             
-            let text = self.extractStringFromDictionary(response!)
-            self.resultTextView.text = text
+                let text = self.extractStringFromDictionary(response!)
+                self.resultTextView.text = text
             
-        })
+            })
+        } else {
+            resultTextView.text = "** No image detected **"
+        }
 
     }
     @IBAction func close(_ sender: UIButton) {
         close.setBackgroundImage(#imageLiteral(resourceName: "close-off"), for: .normal)
         imageView.image = nil
         bgimg.image = #imageLiteral(resourceName: "bg")
+        resultTextView.text = ""
+        if helping {
+            helping = false
+        }
+        currentImage = nil
     }
     
     
@@ -184,98 +195,106 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     /* From */
     @IBAction func fromSpanish(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "spanish")
+        language = "es"
     }
     @IBAction func fromGerman(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "german")
-
+        language = "de"
     }
     @IBAction func fromFinnish(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "finnish")
+        language = "fi"
 
     }
     @IBAction func fromItalian(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "italian")
+        language = "it"
 
     }
     @IBAction func fromJapanese(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "japanese")
+        language = "ja"
 
     }
     @IBAction func fromFrench(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "french")
+        language = "fr"
 
     }
     @IBAction func fromGreek(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "greek")
-
+        language = "el"
     }
     @IBAction func fromDutch(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "dutch")
+        language = "da"
 
     }
     @IBAction func fromChinese(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "chinese")
+        language = "zh-Hans"
 
     }
     @IBAction func fromCanadian(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "canadian")
+        language = "en"
 
     }
     
     /* TO */
     @IBAction func toSpanish(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "spanish")
+        toLanguage = "es"
     }
     @IBAction func toGerman(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "german")
+        toLanguage = "de"
     }
-    /*
     @IBAction func toFinnish(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "finnish")
-    }
-    @IBAction func toItalian(_ sender: Any) {
-        toFlag.image = #imageLiteral(resourceName: "italian")
-    }
-    @IBAction func toJapanese(_ sender: Any) {
-        toFlag.image = #imageLiteral(resourceName: "japanese")
-    }
-     */
-    @IBAction func toFinnish(_ sender: Any) {
-        toFlag.image = #imageLiteral(resourceName: "finnish")
+        toLanguage = "fi"
     }
     
     @IBAction func toItalian(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "italian")
+        toLanguage = "it"
+        
     }
     
     @IBAction func toJapanese(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "japanese")
+        toLanguage = "ja"
     }
     
     @IBAction func toFrench(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "french")
+        toLanguage = "fr"
     }
     
     @IBAction func toGreek(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "greek")
+        toLanguage = "el"
     }
     
     @IBAction func toDutch(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "dutch")
+        toLanguage = "da"
     }
     
     @IBAction func toChinese(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "chinese")
+        toLanguage = "zh-Hans"
     }
     
     @IBAction func toCanadian(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "canadian")
+        toLanguage = "en"
     }
     
     @IBAction func helpbtn(_ sender: Any) {
         if (helping){
             helping = false
-            bgimg.image = #imageLiteral(resourceName: "bgr")
+            bgimg.image = #imageLiteral(resourceName: "bg")
             
         } else {
             helping = true
