@@ -12,6 +12,12 @@ import Foundation
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
 
     
+    // flags
+    @IBOutlet weak var fromFlag: UIImageView!
+    @IBOutlet weak var toFlag: UIImageView!
+    
+    @IBOutlet weak var close: UIButton!
+    @IBOutlet weak var bgimg: UIImageView!
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     var imagePicker: UIImagePickerController!
@@ -19,8 +25,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     var currentImage: UIImage!
     
-    //cognitive variables
-    var language = "unk"
+    // cognitive variables
+    // global Language
+    var language = "it"
     
     /// Request URL
     let url = "https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr"
@@ -56,8 +63,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = #imageLiteral(resourceName: "IMG_1364")
-        currentImage = #imageLiteral(resourceName: "IMG_1364")
+        
+        //toFlag.image = #imageLiteral(resourceName: "canadian")
+        //fromFlag.image = #imageLiteral(resourceName: "canadian")
+        
+        //imageView.image = #imageLiteral(resourceName: "IMG_1364")
+        //currentImage = #imageLiteral(resourceName: "IMG_1364")
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -67,6 +78,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // Dispose of any resources that can be recreated.
     }
     @IBAction func takePhoto(_ sender: UIButton) {
+        close.setBackgroundImage(#imageLiteral(resourceName: "close"), for: .normal)
+        bgimg.image = #imageLiteral(resourceName: "bgp")
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
@@ -97,7 +110,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         let task = URLSession.shared.dataTask(with: request){ data, response, error in
             if error != nil{
-                print("Error -> \(error)")
+               // print("Error -> \(error)")
                 completion(nil)
                 return
             }else{
@@ -148,7 +161,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @IBAction func translatebtn(_ sender: UIButton) {
-        
+        bgimg.image = #imageLiteral(resourceName: "bgr")
         //let requestObject: OCRRequestObject = (resource: UIImagePNGRepresentation(UIImage(named: "ocrDemo")!)!, language: .Automatic, detectOrientation: true)
         try! recognizeCharactersWithRequestObject(completion: { (response) in
             
@@ -158,6 +171,106 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         })
 
     }
+    @IBAction func close(_ sender: UIButton) {
+        close.setBackgroundImage(#imageLiteral(resourceName: "close-off"), for: .normal)
+        imageView.image = nil
+        bgimg.image = #imageLiteral(resourceName: "bg")
+    }
+    
+    
+    /* FLAGS ACTIONS */
+    
+    /* From */
+    @IBAction func fromSpanish(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "spanish")
+    }
+    @IBAction func fromGerman(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "german")
+
+    }
+    @IBAction func fromFinnish(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "finnish")
+
+    }
+    @IBAction func fromItalian(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "italian")
+
+    }
+    @IBAction func fromJapanese(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "japanese")
+
+    }
+    @IBAction func fromFrench(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "french")
+
+    }
+    @IBAction func fromGreek(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "greek")
+
+    }
+    @IBAction func fromDutch(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "dutch")
+
+    }
+    @IBAction func fromChinese(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "chinese")
+
+    }
+    @IBAction func fromCanadian(_ sender: Any) {
+        fromFlag.image = #imageLiteral(resourceName: "canadian")
+
+    }
+    
+    /* TO */
+    @IBAction func toSpanish(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "spanish")
+    }
+    @IBAction func toGerman(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "german")
+    }
+    /*
+    @IBAction func toFinnish(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "finnish")
+    }
+    @IBAction func toItalian(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "italian")
+    }
+    @IBAction func toJapanese(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "japanese")
+    }
+     */
+    @IBAction func toFinnish(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "finnish")
+    }
+    
+    @IBAction func toItalian(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "italian")
+    }
+    
+    @IBAction func toJapanese(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "japanese")
+    }
+    
+    @IBAction func toFrench(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "french")
+    }
+    
+    @IBAction func toGreek(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "greek")
+    }
+    
+    @IBAction func toDutch(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "dutch")
+    }
+    
+    @IBAction func toChinese(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "chinese")
+    }
+    
+    @IBAction func toCanadian(_ sender: Any) {
+        toFlag.image = #imageLiteral(resourceName: "canadian")
+    }
+    
 
 }
 
