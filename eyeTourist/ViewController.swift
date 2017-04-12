@@ -24,6 +24,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var newMedia: Bool?
     
     var currentImage: UIImage!
+    var helping: Bool = false
     
     // cognitive variables
     // global Language
@@ -271,6 +272,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         toFlag.image = #imageLiteral(resourceName: "canadian")
     }
     
+    @IBAction func helpbtn(_ sender: Any) {
+        if (helping){
+            helping = false
+            bgimg.image = #imageLiteral(resourceName: "bgr")
+            
+        } else {
+            helping = true
+            bgimg.image = #imageLiteral(resourceName: "helpbg")
+        }
+        
+    }
 
 }
 
