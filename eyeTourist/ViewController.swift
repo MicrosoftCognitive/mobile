@@ -86,6 +86,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         // Do any additional setup after loading the view, typically from a nib.
         
+        if (resultTextView != nil) {
+            resultTextView.isEditable = false
+        }
+        
+        if (imageView != nil){
+            imageView.image = currentImage
+        }
+        
         if (mainfromflag != nil) && (maintoflag != nil){
         
         switch language {
@@ -138,7 +146,59 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             language = "en"
             maintoflag.image = #imageLiteral(resourceName: "canadian")
         }
+        } else if (fromFlag != nil && toFlag != nil) {
+            switch language {
+            case "en":
+                fromFlag.image = #imageLiteral(resourceName: "canadian")
+            case "it":
+                fromFlag.image = #imageLiteral(resourceName: "italian")
+            case "de":
+                fromFlag.image = #imageLiteral(resourceName: "german")
+            case "nl":
+                fromFlag.image = #imageLiteral(resourceName: "dutch")
+            case "fr":
+                fromFlag.image = #imageLiteral(resourceName: "french")
+            case "es":
+                fromFlag.image = #imageLiteral(resourceName: "spanish")
+            case "ko":
+                fromFlag.image = #imageLiteral(resourceName: "greek")
+            case "fi":
+                fromFlag.image = #imageLiteral(resourceName: "finnish")
+            case "zh-Hans":
+                fromFlag.image = #imageLiteral(resourceName: "chinese")
+            case "ja":
+                fromFlag.image = #imageLiteral(resourceName: "japanese")
+            default:
+                language = "en"
+                fromFlag.image = #imageLiteral(resourceName: "canadian")
             }
+            switch toLanguage {
+            case "en":
+                toFlag.image = #imageLiteral(resourceName: "canadian")
+            case "it":
+                toFlag.image = #imageLiteral(resourceName: "italian")
+            case "de":
+                toFlag.image = #imageLiteral(resourceName: "german")
+            case "nl":
+                toFlag.image = #imageLiteral(resourceName: "dutch")
+            case "fr":
+                toFlag.image = #imageLiteral(resourceName: "french")
+            case "es":
+                toFlag.image = #imageLiteral(resourceName: "spanish")
+            case "ko":
+                toFlag.image = #imageLiteral(resourceName: "greek")
+            case "fi":
+                toFlag.image = #imageLiteral(resourceName: "finnish")
+            case "zh-Hans":
+                toFlag.image = #imageLiteral(resourceName: "chinese")
+            case "ja":
+                toFlag.image = #imageLiteral(resourceName: "japanese")
+            default:
+                language = "en"
+                toFlag.image = #imageLiteral(resourceName: "canadian")
+            }
+            
+        }
        // maintoflag.image =
        // mainfromflag.image =
     }
@@ -428,6 +488,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let destination = segue.destination as? ViewController {
             destination.language = tlanguage
             destination.toLanguage = ttoLanguage
+            destination.currentImage = currentImage
+        }
+        if segue.identifier == "backSegue",
+            let destination = segue.destination as? ViewController {
+            destination.language = language
+            destination.toLanguage = toLanguage
+            destination.currentImage = currentImage
+        }
+        if segue.identifier == "langSegue",
+            let destination = segue.destination as? ViewController {
+            destination.language = language
+            destination.toLanguage = toLanguage
+            destination.tlanguage = language
+            destination.ttoLanguage = toLanguage
+            destination.currentImage = currentImage
         }
     }
 

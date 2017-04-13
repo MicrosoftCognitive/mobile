@@ -46,7 +46,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="language"/>
                                 <connections>
-                                    <segue destination="L1y-WD-a5T" kind="presentation" id="W2h-np-0F1"/>
+                                    <segue destination="L1y-WD-a5T" kind="presentation" identifier="langSegue" id="W2h-np-0F1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ1-vS-sHh">
@@ -317,7 +317,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="A8T-6i-img"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="backSegue" id="A8T-6i-img"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qao-Ju-lho">
@@ -363,6 +363,6 @@
         <image name="translate" width="261" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Aha-7D-okf"/>
+        <segue reference="A8T-6i-img"/>
     </inferredMetricsTieBreakers>
 </document>
