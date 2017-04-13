@@ -157,6 +157,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         present(imagePicker, animated: true, completion: nil)
     }
+    @IBAction func choosePhoto(_ sender: Any) {
+        picframe.image = #imageLiteral(resourceName: "frame")
+        close.setBackgroundImage(#imageLiteral(resourceName: "close"), for: .normal)
+        bgimg.image = #imageLiteral(resourceName: "bg")
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        //UIImagePickerControllerSourceTypePhotoLibrary
+        imagePicker.allowsEditing = true
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         imagePicker.dismiss(animated: true, completion: nil)
         currentImage = info[UIImagePickerControllerEditedImage] as? UIImage
