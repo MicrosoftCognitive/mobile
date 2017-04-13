@@ -149,7 +149,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBAction func takePhoto(_ sender: UIButton) {
         picframe.image = #imageLiteral(resourceName: "frame")
         close.setBackgroundImage(#imageLiteral(resourceName: "close"), for: .normal)
-        bgimg.image = #imageLiteral(resourceName: "bgp")
+        bgimg.image = #imageLiteral(resourceName: "bg")
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
@@ -201,28 +201,39 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     func extractStringsFromDictionary(_ dictionary: [String : AnyObject]) -> [String] {
         
-        // Get Regions from the dictionary
-        let regions = (dictionary["regions"] as! NSArray).firstObject as? [String:AnyObject]
+        if (dictionary["regions"] != nil) {
+            // Get Regions from the dictionary
+            let regions = (dictionary["regions"] as! NSArray).firstObject as? [String:AnyObject]
+            if (regions?["lines"] != nil) {
+                // Get lines from the regions dictionary
+                let lines = regions!["lines"] as! NSArray
         
-        // Get lines from the regions dictionary
-        let lines = regions!["lines"] as! NSArray
         
+                // TODO: Check if this works
         
-        // TODO: Check if this works
+                // Get words from lines
+                let inLine = lines.enumerated().map {($0.element as? NSDictionary)?["words"] as! [[String : AnyObject]] }
         
-        // Get words from lines
-        let inLine = lines.enumerated().map {($0.element as? NSDictionary)?["words"] as! [[String : AnyObject]] }
+                // Get text from words
+                let extractedText = inLine.enumerated().map { $0.element[0]["text"] as! String}
+            
+                return extractedText
+            } else {
+                var extractedText = [String]()
+                extractedText.append("** No text found! **")
+                return extractedText
+            }
+        } else {
+            var extractedText = [String]()
+            extractedText.append("** No text found! **")
+            return extractedText
+        }
         
-        // Get text from words
-        let extractedText = inLine.enumerated().map { $0.element[0]["text"] as! String}
-        
-        return extractedText
     }
     
     func extractStringFromDictionary(_ dictionary: [String:AnyObject]) -> String {
-        
+        //let stringArray = try! extractStringsFromDictionary(dictionary)
         let stringArray = extractStringsFromDictionary(dictionary)
-        
         let reducedArray = stringArray.enumerated().reduce("", {
             $0 + $1.element + ($1.offset < stringArray.endIndex-1 ? " " : "")
         }
