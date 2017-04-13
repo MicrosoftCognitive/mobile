@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 
+
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
 
     @IBOutlet weak var status: UILabel!
@@ -111,7 +112,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         default:
             language = "en"
             mainfromflag.image = #imageLiteral(resourceName: "canadian")
-        }
+            }
         switch toLanguage {
         case "en":
             maintoflag.image = #imageLiteral(resourceName: "canadian")
@@ -233,15 +234,33 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 return extractedText
             } else {
                 var extractedText = [String]()
-                extractedText.append("** No text found! **")
+                extractedText.append("** No text found **")
                 return extractedText
             }
         } else {
             var extractedText = [String]()
-            extractedText.append("** No text found! **")
+            extractedText.append("** No text found **")
             return extractedText
         }
         
+    }
+    
+    func translate(textIn: String) {
+        let translator = ROGoogleTranslate()
+        translator.apiKey = "AIzaSyAWAR4UOWU4xYz5VaFZPivfyLySx-QjDg4" // Add your API Key here
+        
+        var params = ROGoogleTranslateParams()
+        params.source = language
+        params.target = toLanguage
+        params.text = textIn
+        translator.translate(params: params) { (result) in
+            
+            print(result)
+            DispatchQueue.main.async {
+                self.resultTextView.text = result
+            }
+            //self.resultTextView.text = String(result)
+        }
     }
     
     func extractStringFromDictionary(_ dictionary: [String:AnyObject]) -> String {
@@ -261,6 +280,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             
                 let text = self.extractStringFromDictionary(response!)
                 self.resultTextView.text = text
+                
+                if text != "** No text found **" {
+                    self.translate(textIn: text)
+                }
             
             })
         } else {

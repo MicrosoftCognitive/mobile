@@ -13,9 +13,12 @@
 		7306DFD11E9CA2E700728390 /* eyeTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7306DFCF1E9CA2E700728390 /* eyeTourist.xcdatamodeld */; };
 		7306DFD31E9CA2E700728390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7306DFD21E9CA2E700728390 /* Assets.xcassets */; };
 		7306DFD61E9CA2E700728390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7306DFD41E9CA2E700728390 /* LaunchScreen.storyboard */; };
+		737014451E9F55B00093B5C1 /* ROGoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737014441E9F55B00093B5C1 /* ROGoogleTranslate.swift */; };
+		E9792E3EC6B31BDDAE73F945 /* Pods_eyeTourist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AD3E847E37CC5F34A1B6E3 /* Pods_eyeTourist.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02AD3E847E37CC5F34A1B6E3 /* Pods_eyeTourist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eyeTourist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7306DFC51E9CA2E700728390 /* eyeTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eyeTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7306DFC81E9CA2E700728390 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7306DFCA1E9CA2E700728390 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,9 @@
 		7306DFD21E9CA2E700728390 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7306DFD51E9CA2E700728390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7306DFD71E9CA2E700728390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		737014441E9F55B00093B5C1 /* ROGoogleTranslate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ROGoogleTranslate.swift; sourceTree = "<group>"; };
+		C6463CD51056531EAE306DAA /* Pods-eyeTourist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eyeTourist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eyeTourist/Pods-eyeTourist.debug.xcconfig"; sourceTree = "<group>"; };
+		FA024E836FEEBD19A63B848C /* Pods-eyeTourist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eyeTourist.release.xcconfig"; path = "Pods/Target Support Files/Pods-eyeTourist/Pods-eyeTourist.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9792E3EC6B31BDDAE73F945 /* Pods_eyeTourist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C9B5E929CAD667BD355EFF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02AD3E847E37CC5F34A1B6E3 /* Pods_eyeTourist.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7306DFBC1E9CA2E700728390 = {
 			isa = PBXGroup;
 			children = (
 				7306DFC71E9CA2E700728390 /* eyeTourist */,
 				7306DFC61E9CA2E700728390 /* Products */,
+				9618208BB0371402513BFB7C /* Pods */,
+				3C9B5E929CAD667BD355EFF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +75,7 @@
 			children = (
 				7306DFC81E9CA2E700728390 /* AppDelegate.swift */,
 				7306DFCA1E9CA2E700728390 /* ViewController.swift */,
+				737014441E9F55B00093B5C1 /* ROGoogleTranslate.swift */,
 				7306DFCC1E9CA2E700728390 /* Main.storyboard */,
 				7306DFD21E9CA2E700728390 /* Assets.xcassets */,
 				7306DFD41E9CA2E700728390 /* LaunchScreen.storyboard */,
@@ -67,6 +85,15 @@
 			path = eyeTourist;
 			sourceTree = "<group>";
 		};
+		9618208BB0371402513BFB7C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6463CD51056531EAE306DAA /* Pods-eyeTourist.debug.xcconfig */,
+				FA024E836FEEBD19A63B848C /* Pods-eyeTourist.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7306DFDA1E9CA2E700728390 /* Build configuration list for PBXNativeTarget "eyeTourist" */;
 			buildPhases = (
+				B47C2E860FB76D62507E9308 /* [CP] Check Pods Manifest.lock */,
 				7306DFC11E9CA2E700728390 /* Sources */,
 				7306DFC21E9CA2E700728390 /* Frameworks */,
 				7306DFC31E9CA2E700728390 /* Resources */,
+				E17D24CDA0694FF4E16CD802 /* [CP] Embed Pods Frameworks */,
+				0A06F8C8783C4C2C3937D8AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,6 +165,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A06F8C8783C4C2C3937D8AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eyeTourist/Pods-eyeTourist-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B47C2E860FB76D62507E9308 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E17D24CDA0694FF4E16CD802 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eyeTourist/Pods-eyeTourist-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7306DFC11E9CA2E700728390 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -142,6 +220,7 @@
 			files = (
 				7306DFD11E9CA2E700728390 /* eyeTourist.xcdatamodeld in Sources */,
 				7306DFCB1E9CA2E700728390 /* ViewController.swift in Sources */,
+				737014451E9F55B00093B5C1 /* ROGoogleTranslate.swift in Sources */,
 				7306DFC91E9CA2E700728390 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +344,7 @@
 		};
 		7306DFDB1E9CA2E700728390 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6463CD51056531EAE306DAA /* Pods-eyeTourist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YJY3GTSU5J;
@@ -279,6 +359,7 @@
 		};
 		7306DFDC1E9CA2E700728390 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA024E836FEEBD19A63B848C /* Pods-eyeTourist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YJY3GTSU5J;
