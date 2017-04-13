@@ -11,10 +11,13 @@ import Foundation
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
 
+    @IBOutlet weak var status: UILabel!
     
     // flags
     @IBOutlet weak var fromFlag: UIImageView!
     @IBOutlet weak var toFlag: UIImageView!
+    @IBOutlet weak var mainfromflag: UIImageView!
+    @IBOutlet weak var maintoflag: UIImageView!
     
     @IBOutlet weak var close: UIButton!
     @IBOutlet weak var bgimg: UIImageView!
@@ -26,12 +29,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var picframe: UIImageView!
     var currentImage: UIImage!
     var helping: Bool = false
+    var saveLang: Bool = false
     
     // cognitive variables
     // global Language
     var language = "en"
     
     var toLanguage = "en"
+    
+    var tlanguage = "en"
+    
+    var ttoLanguage = "en"
     
     
     /// Request URL
@@ -76,6 +84,62 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         //currentImage = #imageLiteral(resourceName: "IMG_1364")
         
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if (mainfromflag != nil) && (maintoflag != nil){
+        
+        switch language {
+        case "en":
+            mainfromflag.image = #imageLiteral(resourceName: "canadian")
+        case "it":
+            mainfromflag.image = #imageLiteral(resourceName: "italian")
+        case "de":
+            mainfromflag.image = #imageLiteral(resourceName: "german")
+        case "nl":
+            mainfromflag.image = #imageLiteral(resourceName: "dutch")
+        case "fr":
+            mainfromflag.image = #imageLiteral(resourceName: "french")
+        case "es":
+            mainfromflag.image = #imageLiteral(resourceName: "spanish")
+        case "ko":
+            mainfromflag.image = #imageLiteral(resourceName: "greek")
+        case "fi":
+            mainfromflag.image = #imageLiteral(resourceName: "finnish")
+        case "zh-Hans":
+            mainfromflag.image = #imageLiteral(resourceName: "chinese")
+        case "ja":
+            mainfromflag.image = #imageLiteral(resourceName: "japanese")
+        default:
+            language = "en"
+            mainfromflag.image = #imageLiteral(resourceName: "canadian")
+        }
+        switch toLanguage {
+        case "en":
+            maintoflag.image = #imageLiteral(resourceName: "canadian")
+        case "it":
+            maintoflag.image = #imageLiteral(resourceName: "italian")
+        case "de":
+            maintoflag.image = #imageLiteral(resourceName: "german")
+        case "nl":
+            maintoflag.image = #imageLiteral(resourceName: "dutch")
+        case "fr":
+            maintoflag.image = #imageLiteral(resourceName: "french")
+        case "es":
+            maintoflag.image = #imageLiteral(resourceName: "spanish")
+        case "ko":
+            maintoflag.image = #imageLiteral(resourceName: "greek")
+        case "fi":
+            maintoflag.image = #imageLiteral(resourceName: "finnish")
+        case "zh-Hans":
+            maintoflag.image = #imageLiteral(resourceName: "chinese")
+        case "ja":
+            maintoflag.image = #imageLiteral(resourceName: "japanese")
+        default:
+            language = "en"
+            maintoflag.image = #imageLiteral(resourceName: "canadian")
+        }
+            }
+       // maintoflag.image =
+       // mainfromflag.image =
     }
 
     override func didReceiveMemoryWarning() {
@@ -191,6 +255,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         currentImage = nil
         picframe.image = nil
     }
+    @IBAction func saveLanguage(_ sender: Any) {
+        language = tlanguage
+        toLanguage = ttoLanguage
+        //status.text = "from " + language + " to " + toLanguage
+        status.text = "Save: from \(language) to \(toLanguage)"
+    }
     
     
     /* FLAGS ACTIONS */
@@ -198,100 +268,100 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     /* From */
     @IBAction func fromSpanish(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "spanish")
-        language = "es"
+        tlanguage = "es"
     }
     @IBAction func fromGerman(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "german")
-        language = "de"
+        tlanguage = "de"
     }
     @IBAction func fromFinnish(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "finnish")
-        language = "fi"
+        tlanguage = "fi"
 
     }
     @IBAction func fromItalian(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "italian")
-        language = "it"
+        tlanguage = "it"
 
     }
     @IBAction func fromJapanese(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "japanese")
-        language = "ja"
+        tlanguage = "ja"
 
     }
     @IBAction func fromFrench(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "french")
-        language = "fr"
+        tlanguage = "fr"
 
     }
     @IBAction func fromGreek(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "greek")
-        language = "el"
+        tlanguage = "ko"
     }
     @IBAction func fromDutch(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "dutch")
-        language = "da"
+        tlanguage = "nl"
 
     }
     @IBAction func fromChinese(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "chinese")
-        language = "zh-Hans"
+        tlanguage = "zh-Hans"
 
     }
     @IBAction func fromCanadian(_ sender: Any) {
         fromFlag.image = #imageLiteral(resourceName: "canadian")
-        language = "en"
+        tlanguage = "en"
 
     }
     
     /* TO */
     @IBAction func toSpanish(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "spanish")
-        toLanguage = "es"
+        ttoLanguage = "es"
     }
     @IBAction func toGerman(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "german")
-        toLanguage = "de"
+        ttoLanguage = "de"
     }
     @IBAction func toFinnish(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "finnish")
-        toLanguage = "fi"
+        ttoLanguage = "fi"
     }
     
     @IBAction func toItalian(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "italian")
-        toLanguage = "it"
+        ttoLanguage = "it"
         
     }
     
     @IBAction func toJapanese(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "japanese")
-        toLanguage = "ja"
+        ttoLanguage = "ja"
     }
     
     @IBAction func toFrench(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "french")
-        toLanguage = "fr"
+        ttoLanguage = "fr"
     }
     
     @IBAction func toGreek(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "greek")
-        toLanguage = "el"
+        ttoLanguage = "ko"
     }
     
     @IBAction func toDutch(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "dutch")
-        toLanguage = "da"
+        ttoLanguage = "nl"
     }
     
     @IBAction func toChinese(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "chinese")
-        toLanguage = "zh-Hans"
+        ttoLanguage = "zh-Hans"
     }
     
     @IBAction func toCanadian(_ sender: Any) {
         toFlag.image = #imageLiteral(resourceName: "canadian")
-        toLanguage = "en"
+        ttoLanguage = "en"
     }
     
     @IBAction func helpbtn(_ sender: Any) {
@@ -304,6 +374,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             bgimg.image = #imageLiteral(resourceName: "helpbg")
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "saveSegue",
+            let destination = segue.destination as? ViewController {
+            destination.language = tlanguage
+            destination.toLanguage = ttoLanguage
+        }
     }
 
 }
