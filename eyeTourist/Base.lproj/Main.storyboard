@@ -29,6 +29,10 @@
                                 <rect key="frame" x="40" y="49" width="336" height="336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRt-uk-6Dy">
+                                <rect key="frame" x="33" y="43" width="350" height="348"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUJ-fg-vdq">
                                 <rect key="frame" x="44" y="401" width="145" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -65,14 +69,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDo-62-fX9">
-                                <rect key="frame" x="23" y="31" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="close-off"/>
-                                <connections>
-                                    <action selector="close:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eoQ-iU-cxP"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjr-NF-uma">
                                 <rect key="frame" x="7" y="710" width="73" height="19"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -81,6 +77,14 @@
                                 </state>
                                 <connections>
                                     <action selector="helpbtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mr4-td-n7o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDo-62-fX9">
+                                <rect key="frame" x="23" y="31" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="close-off"/>
+                                <connections>
+                                    <action selector="close:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eoQ-iU-cxP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,12 +96,13 @@
                         <outlet property="bgimg" destination="0fb-PU-XwR" id="9Wm-TO-YSO"/>
                         <outlet property="close" destination="XDo-62-fX9" id="yFW-mg-4cM"/>
                         <outlet property="imageView" destination="MHx-oY-6SC" id="O06-XH-1F1"/>
+                        <outlet property="picframe" destination="hRt-uk-6Dy" id="8ew-qU-RoI"/>
                         <outlet property="resultTextView" destination="XXT-xW-RXs" id="9mQ-Hg-BKD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="136.23188405797103" y="138.58695652173915"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="38e-oF-0N6">

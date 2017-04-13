@@ -23,6 +23,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var imagePicker: UIImagePickerController!
     var newMedia: Bool?
     
+    @IBOutlet weak var picframe: UIImageView!
     var currentImage: UIImage!
     var helping: Bool = false
     
@@ -82,6 +83,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // Dispose of any resources that can be recreated.
     }
     @IBAction func takePhoto(_ sender: UIButton) {
+        picframe.image = #imageLiteral(resourceName: "frame")
         close.setBackgroundImage(#imageLiteral(resourceName: "close"), for: .normal)
         bgimg.image = #imageLiteral(resourceName: "bgp")
         imagePicker =  UIImagePickerController()
@@ -187,6 +189,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             helping = false
         }
         currentImage = nil
+        picframe.image = nil
     }
     
     
