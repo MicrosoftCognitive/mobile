@@ -8,6 +8,8 @@
 
 import UIKit
 import Foundation
+import AVFoundation
+import MediaPlayer
 
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
@@ -321,6 +323,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
             //self.resultTextView.text = String(result)
         }
+        speak(userString: resultTextView.text, lang: language)
     }
     
     func extractStringFromDictionary(_ dictionary: [String:AnyObject]) -> String {
@@ -504,6 +507,44 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             destination.ttoLanguage = toLanguage
             destination.currentImage = currentImage
         }
+    }
+    
+    func speak(userString: String,lang: String){
+        let speachLang = speechBuilder(lang: userString)
+        let utterance = AVSpeechUtterance(string: userString)
+        utterance.voice = AVSpeechSynthesisVoice(language: speachLang)
+        utterance.rate = 0.5
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
+    }
+    func speechBuilder (lang: String) -> String {
+        var speachLang: String
+        switch lang {
+        case "en":
+            speachLang = "en-GB"
+        case "it":
+            speachLang = "it-IT"
+        case "de":
+            speachLang = "de-DE"
+        case "nl":
+            speachLang = "nl-NL"
+        case "fr":
+            speachLang = "fr-FR"
+        case "es":
+            speachLang = "es-ES"
+        case "ko":
+            speachLang = "ko-KR"
+        case "fi":
+            speachLang = "fi-FI"
+        case "zh-Hans":
+            speachLang = "zh-CN"
+        case "ja":
+            speachLang = "ja-JP"
+        default:
+            speachLang = "en-GB"
+        }
+        return speachLang
+
     }
 
 }
