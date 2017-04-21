@@ -78,7 +78,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        if(!Reachability.isConnectedToNetwork()) {
+            let alert = UIAlertController(title: "Alert", message: "Must be connected to the internet to use this app. Connect to the internet and restart app.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
         //toFlag.image = #imageLiteral(resourceName: "canadian")
         //fromFlag.image = #imageLiteral(resourceName: "canadian")
